@@ -19,7 +19,7 @@ class AccountCreationController extends RestfulController{
     // We just want to get the status text and save it to the profile.
     def createAccount(){
         def uname = params.userName
-        System.out.print(uname)
+        System.out.print(uname + ": ")
         def account = UserAccount.find{userName == uname}
         if(account == null){
             account = new UserAccount(userName: uname, password: "2212")
@@ -29,7 +29,7 @@ class AccountCreationController extends RestfulController{
         }
         else{
             // Find a better response code...
-            System.out.print('already there')
+            System.out.println('already there')
             response.status = 404
         }
     }
